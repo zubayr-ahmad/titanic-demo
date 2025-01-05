@@ -35,7 +35,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           
           # Clone the specific Hugging Face Space repository
-          git clone https://$HF_TOKEN@huggingface.co/spaces/zubayr-ahmad-hugging-face/titanic-app huggingface-space
+          git clone https://x-access-token:$HF_TOKEN@huggingface.co/spaces/zubayr-ahmad-hugging-face/titanic-app huggingface-space
           
           # Copy files from our repository to the Hugging Face Space directory
           cp -r repo/* huggingface-space/
@@ -46,4 +46,4 @@ jobs:
           # Add, commit, and push changes
           git add .
           git commit -m "Update from GitHub Actions"
-          git push https://$HF_TOKEN@huggingface.co/spaces/zubayr-ahmad-hugging-face/titanic-app main
+          git push https://x-access-token:$HF_TOKEN@huggingface.co/spaces/zubayr-ahmad-hugging-face/titanic-app main
