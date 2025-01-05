@@ -30,14 +30,12 @@ jobs:
       - name: Deploy to Hugging Face Spaces
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HF_USERNAME: ${{ secrets.HF_USERNAME }}
-          HF_SPACE_NAME: ${{ secrets.HF_SPACE_NAME }}
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           
-          # Clone the Hugging Face Space repository
-          git clone https://huggingface.co/spaces/$HF_USERNAME/$HF_SPACE_NAME huggingface-space
+          # Clone the specific Hugging Face Space repository
+          git clone https://$HF_TOKEN@huggingface.co/spaces/zubayr-ahmad-hugging-face/titanic-app huggingface-space
           
           # Copy files from our repository to the Hugging Face Space directory
           cp -r repo/* huggingface-space/
@@ -48,4 +46,4 @@ jobs:
           # Add, commit, and push changes
           git add .
           git commit -m "Update from GitHub Actions"
-          git push https://$HF_TOKEN@huggingface.co/spaces/$HF_USERNAME/$HF_SPACE_NAME
+          git push https://$HF_TOKEN@huggingface.co/spaces/zubayr-ahmad-hugging-face/titanic-app main
